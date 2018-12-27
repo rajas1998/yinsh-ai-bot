@@ -1,5 +1,6 @@
-#Pheuristic
-
+Pheuristic
+----------
+----------
 We built a bot which was capable of running true ply 5 (without any selected expansion of good
 nodes). We implemented mini-max along with alpha beta pruning. We also sorted the expansion
 of internal nodes according to our evaluation function, used hashing for fast evaluation and
