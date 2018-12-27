@@ -1,6 +1,5 @@
 Pheuristic
 ----------
-----------
 We built a bot which was capable of running true ply 5 (without any selected expansion of good
 nodes). We implemented mini-max along with alpha beta pruning. We also sorted the expansion
 of internal nodes according to our evaluation function, used hashing for fast evaluation and
@@ -11,18 +10,18 @@ beginning and never ditched it :)
 
 1. Changes in minimax  
 
-a. We implemented minimax with alpha beta pruning. Sorting the internal nodes and
+* We implemented minimax with alpha beta pruning. Sorting the internal nodes and
 expanding them in this order helped us prune many parts provably. We used our
 evaluation function to evaluate all our children, sorted them according to this
 value, and descended to the children in this order.  
-b. We also hashed the entire board using Zobrist hashing. This helped us evaluate
+* We also hashed the entire board using Zobrist hashing. This helped us evaluate
 the board fast over successive searches of Iterative deepening as it was faster to
 look up the hash table than to evaluate the board. This would also work as a
 transposition table, but we didn’t see much improvement as the number of
 duplicate nodes at a certain level were low.  
-c. We added two killer moves at each depth, which when applicable would lead to
+* We added two killer moves at each depth, which when applicable would lead to
 faster pruning.  
-d. We also used iterative deepening. We started from a depth of 2, and calculated
+* We also used iterative deepening. We started from a depth of 2, and calculated
 the time that minimax run at that depth took. The time taken at the successive
 depth would increase by a factor of the branching factor, and we approximated
 the branching factor using the number of rings as an indicator. We multiplied the
@@ -33,11 +32,11 @@ game progressed, we were hitting depths of 7, and sometimes even 11. Also, this
 made it reach different depths on different computers according to their speed.  
 
 2. Optimizations. 
-a. We implemented a reverse move after each move in the minimax tree. So, when
+* We implemented a reverse move after each move in the minimax tree. So, when
 we were descending in the depth first search, we would not need to copying the
 entire board configuration and could reach it by using the reverse move as
 “previous pointers”.  
-b. During time analysis, we realized that the function which finds if there are
+* During time analysis, we realized that the function which finds if there are
 consecutive five markers was called many times and was taking more than 50%
 of the execution time. Instead of traversing the whole board to find these rows,
 we just checked the markers which changed colour and thus did it in almost
